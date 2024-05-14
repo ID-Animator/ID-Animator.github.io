@@ -1,0 +1,236 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ID-Animator</title>
+<link href="./files/style.css" rel="stylesheet">
+<link href="./files/button.css" rel="stylesheet">
+<link href="./files/slider.css" rel="stylesheet">
+
+
+<script type="text/javascript" src="./files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./files/jquery.js"></script>
+<script src="./files/util.js" content="text/javascript"></script>
+<link rel="manifest" href="/site.webmanifest">
+
+
+</head>
+
+<body>
+<div class="content">
+
+  <h1><strong>ID-Animator: Zero-Shot Identity-Preserving Human Video Generation</strong></h1>
+  <p id="authors"><a href="https://scholar.google.com/citations?user=-bDAN2YAAAAJ&hl=en">Xuanhua He</a	><sup>1,2*</sup>, <a href="https://liuquande.github.io/">Quande Liu</a><sup>3</sup><sup>&#x2709;</sup>, <a href="https://scholar.google.com/citations?user=QNnWmasAAAAJ&hl=zh-CN">Shengju Qian</a><sup>3</sup>,Xin Wang<sup>3</sup>, Tao Hu<sup>1,2</sup>, <a href="https://scholar.google.com/citations?user=3qMrWmgAAAAJ&hl=en&oi=ao">Ke Cao</a><sup>1,2</sup> <br>Keyu Yan<sup>1,2</sup>,
+    Jie Zhang<sup>2</sup><sup>&#x2709;</sup>
+    <br>
+  <span style="font-size: 18px"><sup>1</sup>Univerity of Science and Technology of China;&nbsp; <br><sup>2</sup>Hefei Institute of Physical Science, Chinese Academy of Sciences; <br><sup>3</sup>LightSpeed Studios, Tencent
+  </span></p>
+  <div style="text-align: center;">
+    <span style="font-size: 14px"><sup>*</sup> Intern in Tencent  &nbsp;&nbsp;&nbsp;&nbsp;  &#x2709; Corresponding Authors</span>
+  </div>
+          <p style="text-align: center;">
+            <a href="https://arxiv.org/abs/2404.15275" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/ID-Animator/ID-Animator" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://huggingface.co/spaces/ID-Animator/ID-Animator" target="_blank">[Huggingface space]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+    </font>
+      <div class="realContainer">
+        <div class="real1stCol"><img class="realImage" src="./assets/first_part/ref/cl.png" data-id="cl"></div>
+        <div class="real2ndCol"><img class="realImage" src="./assets/first_part/ref/zdy.png" data-id="zdy"></div>
+        <div class="real3rdCol"><img class="realImage" src="./assets/first_part/ref/lecun1.png" data-id="lecun"></div>
+        <div class="real4thCol"><img class="realImage" src="./assets/first_part/ref/mnls.png" data-id="mnls"></div>
+        <div class="real5thCol"><img class="realImage" src="./assets/first_part/ref/Augustus.png" data-id="augustus"></div>
+        <div class="real6thCol"><img class="realImage" src="./assets/first_part/ref/fbb.png" data-id="fbb"></div>
+        <div class="realResult">
+          <img class="resultImage" src="./assets/first_part/lecun/1.gif" alt="./assets/first_part/lecun/1.gif" loop>
+          <img class="resultImage"  src="./assets/first_part/lecun/2.gif" alt="./assets/first_part/lecun/2.gif" loop>
+          <img class="resultImage" src="./assets/first_part/lecun/3.gif" alt="./assets/first_part/lecun/3.gif" loop>
+          <img class="resultImage" src="./assets/first_part/lecun/4.gif" alt="./assets/first_part/lecun/4.gif" loop>
+          <img class="resultImage" src="./assets/first_part/lecun/5.gif" alt="./assets/first_part/lecun/5.gif" loop>
+          <img class="resultImage" src="./assets/first_part/lecun/6.gif" alt="./assets/first_part/lecun/6.gif" loop>
+        </div>
+  
+  </div>
+</div>
+<div class="content">
+  <h2>Inference with Community Models</h2>
+  <p> Our method consistently exhibits reliable facial preservation and motion
+    generation capabilities in Community Models
+  </p>
+  <div class="commContainer">
+    <div class="comm1"><img class="commImage" src="./assets/fifth_part/ref/lm.png" data-id="lm"></div>
+    <div class="comm3"><img class="commImage" src="./assets/fifth_part/ref/Hinton.png" data-id="hinton"></div>
+    <div class="comm4"><img class="commImage" src="./assets/fifth_part/ref/ann.png" data-id="ann"></div>
+    <div class="comm5"><img class="commImage" src="./assets/fifth_part/ref/Taylor.png" data-id="taylor"></div>
+    <div class="comm6"><img class="commImage" src="./assets/fifth_part/ref/trump.png" data-id="trump"></div>
+    <div class="commResult">
+      <img class="commresultImage" src="./assets/fifth_part/ann/1.gif">
+      <img class="commresultImage"  src="./assets/fifth_part/ann/2.gif">
+      <img class="commresultImage" src="./assets/fifth_part/ann/3.gif">
+      <img class="commresultImage" src="./assets/fifth_part/ann/4.gif">
+      <img class="commresultImage" src="./assets/fifth_part/ann/5.gif">
+      <img class="commresultImage" src="./assets/fifth_part/ann/6.gif">
+    </div>
+  </div> 
+</div>
+
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>Generating high fidelity human video with specified identities has attracted significant attention in the content generation community. 
+    However, existing techniques struggle to strike a balance between training efficiency and identity preservation, either requiring tedious case-by-case finetuning or usually missing the identity details in video generation process. 
+    In this study, we present <strong>ID-Animator</strong>, a zero-shot human-video generation approach that can perform personalized video generation given single reference facial image without further training. 
+    ID-Animator inherits existing diffusion-based video generation backbones with an face adapter to encode the ID-relevant embeddings from learnable facial latent queries. 
+    To facilitate the extraction of identity information in video generation, we introduce an ID-oriented dataset construction pipeline, which incorporates decoupled human attribute and action captioning technique from a constructed facial image pool. Based on this pipeline, a random face reference training method is further devised to precisely capture the ID-relevant embeddings from reference images, thus improving the fidelity and generalization capacity of our model for ID-specific video generation. 
+    Extensive experiments demonstrates the superiority of ID-Animator to generate personalized human videos over previous models. Moreover, our method is highly compatible with popular pre-trained T2V models like animatediff and various community backbone models, showing high extendability in real-world applications for video generation where identity preservation is highly desired. 
+    Code will be released at <a href="https://github.com/ID-Animator/ID-Animator">https://github.com/ID-Animator/ID-Animator</a>.
+  </p>
+</div>
+
+<div class="content">
+  <h2 style="text-align:center;">Method</h2>
+  <p> Given a reference ID image, ID-Animator endeavors to produce high-fidelity ID-specific human videos. This figure demonstrates our methods, featuring three pivotal constituents: a dataset reconstruction pipeline, the ID-Animator framework, and a random reference training method employed during the training process of ID-Animator.
+  <br>
+  <img class="summary-img" src="./assets/framework.png" style="width:80%;"> <br>
+
+  
+    <p><strong>ID-Animator Framework</strong> Our ID-Animator framework consists of a text-to-video model and a face adapter for efficiency. 
+      We use AnimateDiff as our base model and design a simple face adapter module for fast training and video generation with identity preservation.
+    </p>
+    <p><strong>Dataset Reconstruction Pipeline</strong>   Due to the lack of identity-focused datasets for video generation, we reconstruct the CelebV-HQ dataset into an identity-oriented human dataset. 
+      This involves generating decoupled human captions and detecting and constructing a faces pool.
+    </p>
+  <p><strong>Random Reference Training for Diminishing ID-Irrelevant Features </strong> 
+    During training, we randomly select a reference image from a pool of previously extracted face pool. By employing this Monte Carlo technique, the features from diverse reference
+    images are averaged, reducing the influence of identity-invariant features.</p>
+  <br>
+</div>
+
+<div class="content">
+  <h2>Recontextualization</h2>
+  <p>We demonstrate the generation capabilities of our ID-Animator under basic prompts. 
+  </p>
+  <p>The contextual information of characters can be tailored through text, encompassing
+    attributes such as <strong>hair</strong> and <strong>clothing</strong>, creating novel character <strong>backgrounds</strong>, and enabling them to
+    execute specific  <strong>actions</strong>, as well as <strong>gender</strong> and <strong>age</strong>.</p>
+  <div class="ReconSelect">
+    <div class="ReconSelect1"><img class="ReconImage" src="./assets/second_part/ref/sansa.png" data-id="sansa"></div>
+    <div class="ReconSelect2"><img class="ReconImage" src="./assets/second_part/ref/biden.png" data-id="biden"></div>
+    <div class="ReconSelect3"><img class="ReconImage" src="./assets/first_part/ref/lecun1.png" data-id="lecun"></div>
+    <div class="ReconSelect4"><img class="ReconImage" src="./assets/second_part/ref/eva.png" data-id="eva"></div>
+    <div class="ReconSelect5"><img class="ReconImage" src="./assets/second_part/ref/musk.png" data-id="musk"></div>
+    <div class="ReconResult">
+      <div class="imageContainer">
+        <img class="resultImage" src="./assets/second_part/lecun/1.gif">
+        <p class="caption">A bald man with a neatly trimmed beard, showcasing his shiny scalp, eating food
+        </p>
+      </div>
+      <div class="imageContainer">
+        <img class="resultImage" src="./assets/second_part/lecun/2.gif">
+        <p class="caption">A man with dyed pink and purple hair, styled in a high ponytail
+        </p>
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<div class="content">
+  <h2>Identity Mixing  </h2>
+  <p>  Through the
+    blending of embeddings from two distinct IDs in varying proportions, we have effectively combined
+    features from both IDs in the generated video.
+  </p>
+  <div class="mixContainer">
+    <div class="mix1"><img class="mixImage" src="./assets/third_part/ref/3.png" data-id="3"></div>
+    <div class="mix2"><img class="mixImage" src="./assets/third_part/ref/2.png" data-id="2"></div>
+    <div class="mix3"><img class="mixImage" src="./assets/third_part/ref/1.png" data-id="1"></div>
+    <div class="mix4"><img class="mixImage" src="./assets/third_part/ref/4.png" data-id="4"></div>
+    <div class="mix5"><img class="mixImage" src="./assets/third_part/ref/5.png" data-id="5"></div>
+    <div class="mix6"><img class="mixImage" src="./assets/third_part/ref/6.png" data-id="6"></div>
+    <div class="mixResult">
+      <img class="mixresultImage" src="./assets/third_part/1/1.gif">
+      <img class="mixresultImage"  src="./assets/third_part/1/2.gif">
+      <img class="mixresultImage" src="./assets/third_part/1/3.gif">
+      <img class="mixresultImage" src="./assets/third_part/1/4.gif">
+      <img class="mixresultImage" src="./assets/third_part/1/5.gif">
+      <img class="mixresultImage" src="./assets/third_part/1/6.gif">
+    </div>
+  </div>
+</div>
+
+
+
+<div class="content">
+  <h2>Combination with ControlNet</h2>
+  <p> We can supply either single frame control images or multi-frame control images. When a
+    single frame control image is provided, the generated result adeptly fuses the control image with
+    the face reference image. In cases where multiple control images are presented, the generated video
+    sequence closely adheres to the sequence provided by the multiple images 
+  </p>
+  <p style="font-size: 1.25em" class="serif"><b style="font-size: 1.3em;"> Single Sketch-to-Video</b> = Sketch Image + ID Image</p>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="./assets/fourth_part/sketch.png" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Input sketch</p>
+    </div>
+
+    <div class="col-gallery" style="margin-right: 1%;">
+      <img src="./assets/first_part/ref/fbb.png" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Reference Image</p>
+    </div>
+
+    <div class="col-gallery">
+      <img src="./assets/fourth_part/1.gif" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Output Video</p>
+    </div>
+
+    <div class="col-gallery">
+      <img src="./assets/fourth_part/2.gif" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Output Video</p>
+    </div>
+
+  </div>
+  <p style="font-size: 1.25em" class="serif"><b style="font-size: 1.3em;"> Sketch Sequence-to-Video</b> = Sketch Sequence + ID Image</p>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="./assets/fourth_part/sketch_sequence.png" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">sketch Sequence</p>
+    </div>
+
+    <div class="col-gallery" style="margin-right: 1%;">
+      <img src="./assets/first_part/ref/fbb.png" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Reference Image</p>
+    </div>
+
+    <div class="col-gallery">
+      <img src="./assets/fourth_part/3.gif" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Output Video</p>
+    </div>
+
+    <div class="col-gallery">
+      <img src="./assets/fourth_part/4.gif" style="width: 100%; border: 1px solid #000000;">
+      <p style="text-align: center; margin-top: 0; width: 100%;">Output Video</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content" id="acknowledgements">
+  <p>
+    <!-- <strong>Acknowledgements</strong>: -->
+    <!-- If you want an image removed from this page or have other requests, please contact us at <a href="mailto:zhenli1031@gmail.com">zhenli1031@gmail.com</a>. -->
+    <!-- <br> -->
+    Our project page is borrowed from <a href="https://dreambooth.github.io/">DreamBooth</a>.
+    <!-- Recycling a familiar <a href="https://chail.github.io/latent-composition/">template</a> ;). --> 
+  </p>
+</div>
+<script content="text/javascript">initArtSelection(); </script>
+<script content="text/javascript">initRealSelection(); </script>
+<script content="text/javascript">initReconSelection(); </script>
+<script content="text/javascript">initMixSelection(); </script>
+<script content="text/javascript">initCommuSelection(); </script>
+
+</body>
+</html>
